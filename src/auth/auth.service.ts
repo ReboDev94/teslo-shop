@@ -68,4 +68,11 @@ export class AuthService {
     console.log(error);
     throw new InternalServerErrorException('check logs');
   }
+
+  checkAuthStatus(user: User) {
+    return {
+      ...user,
+      token: this.getJwt({ uid: user.id }),
+    };
+  }
 }
